@@ -514,18 +514,15 @@ function getFABarbarians(rows, wallLevel, partialLossesReports) {
 			);
 			const reportTime = jQuery(row).find('td:eq(4)').text().trim();
 			const type = jQuery(row).find('td:eq(1) img').attr('src');
-
-			if (!type.includes('green.png')) {
-				barbarians.push({
-					villageId: villageId,
-					coord: coord,
-					distance: distance,
-					wall: wall,
-					reportId: reportId,
-					reportTime: reportTime,
-					type: type,
-				});
-			}
+			barbarians.push({
+				villageId: villageId,
+				coord: coord,
+				distance: distance,
+				wall: wall,
+				reportId: reportId,
+				reportTime: reportTime,
+				type: type,
+			});
 		} else {
 			if (jQuery(row).find('td:eq(6)').text() === '?' && partialLossesReports) {
 				const villageId = parseInt(
@@ -543,17 +540,15 @@ function getFABarbarians(rows, wallLevel, partialLossesReports) {
 				const reportTime = jQuery(row).find('td:eq(4)').text().trim();
 				const type = jQuery(row).find('td:eq(1) img').attr('src');
 
-				if (!type.includes('green.png')) {
-					barbarians.push({
-						villageId: villageId,
-						coord: coord,
-						distance: distance,
-						wall: wall,
-						reportId: reportId,
-						reportTime: reportTime,
-						type: type,
-					});
-				}
+				barbarians.push({
+					villageId: villageId,
+					coord: coord,
+					distance: distance,
+					wall: wall,
+					reportId: reportId,
+					reportTime: reportTime,
+					type: type,
+				});
 			}
 		}
 	});
