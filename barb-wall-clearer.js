@@ -60,6 +60,8 @@ var translations = {
 // Init Debug
 initDebug();
 
+console.log(game_data);
+
 // Initialize script logic
 async function initClearBarbarianWalls(store) {
 	const { MAX_BARBARIANS, MAX_FA_PAGES_TO_FETCH, WALL_LEVEL, PARTIAL_LOSSES_REPORTS } = store;
