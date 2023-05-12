@@ -102,6 +102,13 @@ var keyPressSettings = {
     "defaultButton": "Skip"
 };
 var availableLangs = ["en", "es", "el", "ar", "it"];
+
+// Redirect to FA
+const gameScreen = getParameterByName('screen');
+if (gameScreen != "am_farm") {
+    window.location.assign(window.top.game_data.link_base_pure + 'am_farm');
+}
+
 window.top.$.getScript(scriptURL + 'lib/jstorage.js', function() {
     window.top.$.getScript(scriptURL + "resources.js", function() {
         if (window.top.$.jStorage.get("language") == null) {
@@ -114,6 +121,13 @@ window.top.$.getScript(scriptURL + 'lib/jstorage.js', function() {
     });
     window.top.$.getScript(scriptURL + 'notify.js');
 });
+
+
+
+// Helper: Get parameter by name
+function getParameterByName(name, url = window.location.href) {
+	return new URL(url).searchParams.get(name);
+}
 
 function run() {
     console.log("run");
