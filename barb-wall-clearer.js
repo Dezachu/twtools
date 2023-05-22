@@ -560,23 +560,21 @@ function getFABarbarians(rows, wallLevel, partialLossesReports) {
 function calculateUnitsToSend(wall) {
 	switch (wall) {
 		case 1:
-			return `&axe=60&ram=2&spy=1`;
-		case 2:
 			return `&axe=60&ram=4&spy=1`;
- 		case 3:
+		case 2:
 			return `&axe=60&ram=7&spy=1`;
+ 		case 3:
+			return `&axe=60&ram=10&spy=1`;
     		case 4:
-			return `&axe=150&ram=10&spy=1`;
-    		case 5:
 			return `&axe=150&ram=15&spy=1`;
-    		case 6:
+    		case 5:
 			return `&axe=150&ram=20&spy=1`;
+    		case 6:
+			return `&axe=150&ram=25&spy=1`;
     		case 7:
-			return `&axe=250&ram=25&spy=1`;
-		case 8:
 			return `&axe=250&ram=30&spy=1`;
-		case 9:
-			return `&axe=500&ram=38&spy=1`;
+		case 8:
+			return `&axe=250&ram=38&spy=1`;
 		case 9:
 			return `&axe=500&ram=46&spy=1`;
 		default:
