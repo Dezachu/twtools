@@ -1190,9 +1190,10 @@ function turnOnHotkeys() {
                 case keycodes.right:
                     getNewVillage("n");
                     break;
-                default:
-			console.log("Returning in default case");
+                default: {
+		    console.log("Returning in default case");
                     return true;
+		}
             }
         }
 	console.log("Prevented default");
