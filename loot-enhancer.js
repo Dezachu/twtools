@@ -1192,7 +1192,7 @@ function turnOnHotkeys() {
                     break;
                 default:
 			console.log("Returning in default case");
-                    return;
+                    return true;
             }
         }
 	console.log("Prevented default");
