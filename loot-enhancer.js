@@ -634,8 +634,6 @@ function hideRecentlyFarmed(cell, profileArray) {
         var dif = t1.getTime() - t2.getTime();
         var minutesBetween = Math.abs(parseInt(dif / 1000 / 60));
         
-        console.log("Check?", profileArray, cell, village, sentTime);
-        
         switch (profileArray[s.sent_time_filter]) {
             case "hide":
                 if (minutesBetween < parseInt(profileArray[s.hide_recent_time])) {
