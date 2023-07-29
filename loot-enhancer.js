@@ -1193,9 +1193,11 @@ function turnOnHotkeys() {
                     getNewVillage("n");
                     break;
                 default:
+			console.log("Returning in default case");
                     return;
             }
         }
+	console.log("Prevented default");
         e.preventDefault();
     };
 }
