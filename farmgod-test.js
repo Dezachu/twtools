@@ -619,6 +619,8 @@ window.FarmGod.Main = (function (Library, Translation) {
         return { 'coord': key, 'dis': lib.getDistance(prop, key) };
       }).sort((a, b) => (a.dis > b.dis) ? 1 : -1);
 
+      console.log("ORDERED FARMS BEFORE", orderedFarms);
+
       orderedFarms.forEach((el) => {
         let farmIndex = data.farms.farms[el.coord];
         let template_name = (optionMaxloot && farmIndex.hasOwnProperty('max_loot') && farmIndex.max_loot) ? 'b' : 'a';
@@ -637,6 +639,8 @@ window.FarmGod.Main = (function (Library, Translation) {
         } else {
           data.commands[el.coord] = [];
         }
+
+        console.log("State of current farm", el.coord, unitsLeft, timeDiff, distance, optionDistance);
 
         if (unitsLeft && timeDiff && (distance < optionDistance)) {
           plan.counter++;
