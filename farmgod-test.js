@@ -638,7 +638,7 @@ window.FarmGod.Main = (function (Library, Translation) {
           }
           data.commands[el.coord].forEach((timestamp) => {
             if (Math.abs(timestamp - arrival) < maxTimeDiff) {
-              console.log("Time diff now false (check 2).", timestamp, arrival, maxTimeDiff);
+              console.log("Time diff now false (check 2).", timestamp, arrival, maxTimeDiff, data.commands[el.coord]);
               timeDiff = false;
             }
           });
