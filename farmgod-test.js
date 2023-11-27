@@ -632,9 +632,15 @@ window.FarmGod.Main = (function (Library, Translation) {
         let maxTimeDiff = Math.round(optionTime * 60);
         let timeDiff = true;
         if (data.commands.hasOwnProperty(el.coord)) {
-          if (!farmIndex.hasOwnProperty('color') && data.commands[el.coord].length > 0) timeDiff = false;
+          if (!farmIndex.hasOwnProperty('color') && data.commands[el.coord].length > 0) {
+            console.log("Time diff now false (check 1).", farmIndex.hasOwnProperty('color'), data.commands[el.coord].length);
+            timeDiff = false;
+          }
           data.commands[el.coord].forEach((timestamp) => {
-            if (Math.abs(timestamp - arrival) < maxTimeDiff) timeDiff = false;
+            if (Math.abs(timestamp - arrival) < maxTimeDiff) {
+              console.log("Time diff now false (check 2).", timestamp, arrival, maxTimeDiff);
+              timeDiff = false;
+            }
           });
         } else {
           data.commands[el.coord] = [];
