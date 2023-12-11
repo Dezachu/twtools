@@ -627,6 +627,8 @@ window.FarmGod.Main = (function (Library, Translation) {
         let template = data.farms.templates[template_name];
         let unitsLeft = lib.subtractArrays(data.villages[prop].units, template.units);
 
+        console.log("???", data.villages[prop].units, template.units);
+
         let distance = lib.getDistance(prop, el.coord);
         let arrival = Math.round(serverTime + ((distance * template.speed) * 60) + Math.round(plan.counter / 5));
         let maxTimeDiff = Math.round(optionTime * 60);
