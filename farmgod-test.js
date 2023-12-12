@@ -359,8 +359,9 @@ window.FarmGod.Main = (function (Library, Translation) {
             let optionLosses = $('.optionLosses').prop('checked');
             let optionMaxloot = $('.optionMaxloot').prop('checked');
             let optionNewbarbs = $('.optionNewbarbs').prop('checked') || false;
+            let optionBFarmPartials = $('.optionBFarmPartials').prop('checked') || false;
 
-            localStorage.setItem('farmGod_options', JSON.stringify({ optionGroup: optionGroup, optionDistance: optionDistance, optionTime: optionTime, optionLosses: optionLosses, optionMaxloot: optionMaxloot, optionNewbarbs: optionNewbarbs }));
+            localStorage.setItem('farmGod_options', JSON.stringify({ optionGroup: optionGroup, optionDistance: optionDistance, optionTime: optionTime, optionLosses: optionLosses, optionMaxloot: optionMaxloot, optionNewbarbs: optionNewbarbs, optionBFarmPartials: optionBFarmPartials }));
 
             $('.optionsContent').html(UI.Throbber[0].outerHTML + '<br><br>');
             getData(optionGroup, optionNewbarbs, optionLosses).then((data) => {
@@ -417,7 +418,7 @@ window.FarmGod.Main = (function (Library, Translation) {
   };
 
   const buildOptions = function () {
-    let options = JSON.parse(localStorage.getItem('farmGod_options')) || { optionGroup: 0, optionDistance: 25, optionTime: 10, optionLosses: false, optionMaxloot: true, optionNewbarbs: true };
+    let options = JSON.parse(localStorage.getItem('farmGod_options')) || { optionGroup: 0, optionDistance: 25, optionTime: 10, optionLosses: false, optionMaxloot: true, optionNewbarbs: true, optionBFarmPartials: false };
     let checkboxSettings = [false, true, true, true, false];
     let checkboxError = $('#plunder_list_filters').find('input[type="checkbox"]').map((i, el) => {
       return ($(el).prop('checked') != checkboxSettings[i]);
@@ -435,6 +436,7 @@ window.FarmGod.Main = (function (Library, Translation) {
                   <tr><td>${t.options.time}</td><td><input type="text" size="5" class="optionTime" value="${options.optionTime}"></td></tr>
                   <tr><td>${t.options.losses}</td><td><input type="checkbox" class="optionLosses" ${(options.optionLosses) ? 'checked' : ''}></td></tr>
                   <tr><td>${t.options.maxloot}</td><td><input type="checkbox" class="optionMaxloot" ${(options.optionMaxloot) ? 'checked' : ''}></td></tr>
+                  <tr><td>Always send B farm if partial losses</td><td><input type="checkbox" class="optionBFarmPartials" ${(options.optionBFarmPartials) ? 'checked' : ''}></td></tr>
                   ${(game_data.market == 'nl') ? `<tr><td>${t.options.newbarbs}</td><td><input type="checkbox" class="optionNewbarbs" ${(options.optionNewbarbs) ? 'checked' : ''}></td></tr>` : ''}
                 </table></div><br><input type="button" class="btn optionButton" value="${t.options.button}"></div>`;
     });
