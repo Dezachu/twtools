@@ -367,7 +367,7 @@ window.FarmGod.Main = (function (Library, Translation) {
             getData(optionGroup, optionNewbarbs, optionLosses).then((data) => {
               Dialog.close();
 
-              let plan = createPlanning(optionDistance, optionTime, optionMaxloot, data);
+              let plan = createPlanning(optionDistance, optionTime, optionMaxloot, data, optionBFarmPartials);
               $('.farmGodContent').remove();
               $('#am_widget_Farm').first().before(buildTable(plan.farms));
 
@@ -435,8 +435,8 @@ window.FarmGod.Main = (function (Library, Translation) {
                   <tr><td>${t.options.distance}</td><td><input type="text" size="5" class="optionDistance" value="${options.optionDistance}"></td></tr>
                   <tr><td>${t.options.time}</td><td><input type="text" size="5" class="optionTime" value="${options.optionTime}"></td></tr>
                   <tr><td>${t.options.losses}</td><td><input type="checkbox" class="optionLosses" ${(options.optionLosses) ? 'checked' : ''}></td></tr>
-                  <tr><td>${t.options.maxloot}</td><td><input type="checkbox" class="optionMaxloot" ${(options.optionMaxloot) ? 'checked' : ''}></td></tr>
                   <tr><td>Always send B farm if partial losses</td><td><input type="checkbox" class="optionBFarmPartials" ${(options.optionBFarmPartials) ? 'checked' : ''}></td></tr>
+                  <tr><td>${t.options.maxloot}</td><td><input type="checkbox" class="optionMaxloot" ${(options.optionMaxloot) ? 'checked' : ''}></td></tr>
                   ${(game_data.market == 'nl') ? `<tr><td>${t.options.newbarbs}</td><td><input type="checkbox" class="optionNewbarbs" ${(options.optionNewbarbs) ? 'checked' : ''}></td></tr>` : ''}
                 </table></div><br><input type="button" class="btn optionButton" value="${t.options.button}"></div>`;
     });
@@ -612,7 +612,7 @@ window.FarmGod.Main = (function (Library, Translation) {
     });
   };
 
-  const createPlanning = function (optionDistance, optionTime, optionMaxloot, data) {
+  const createPlanning = function (optionDistance, optionTime, optionMaxloot, data, optionBFarmPartials) {
     let plan = { counter: 0, farms: {} };
     let serverTime = Math.round(lib.getCurrentServerTime() / 1000);
 
@@ -629,7 +629,7 @@ window.FarmGod.Main = (function (Library, Translation) {
         let template = data.farms.templates[template_name];
         let unitsLeft = lib.subtractArrays(data.villages[prop].units, template.units);
 
-        console.log("???", data.villages[prop].units, template.units);
+        console.log("???", data.farms.farms[el.coord], data.farms);
 
         let distance = lib.getDistance(prop, el.coord);
         let arrival = Math.round(serverTime + ((distance * template.speed) * 60) + Math.round(plan.counter / 5));
