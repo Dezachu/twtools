@@ -1893,7 +1893,7 @@ async function getResourcesForAM(time_construction_total,map_farm_usage){
             // console.log(list_template)
     
             //special case if a village doesn't have farm to max lv then check if farm is >99% used and then request to build farm 1 lv
-	    console.log("Village details Dez", map_buildings.get(coord+"_farm"), map_farm_usage.get(coord), map_coord_templates.keys());
+	    console.log("Village details Dez", coord, map_buildings.get(coord+"_farm"), map_farm_usage.get(coord), map_coord_templates.keys());
             if(map_buildings.get(coord+"_farm")<30 && map_farm_usage.get(coord)>=0.99){
                 let lv_building_HQ=map_buildings.get(coord+"_main")
                 let lv_building_current=map_buildings.get(coord+"_farm")//curent building from building page
@@ -2118,7 +2118,7 @@ function getTemplates(){
 
 
                 // console.log("map_construction_templates",map_construction_templates)
-                // console.log("map_coord_templates",map_coord_templates)
+                console.log("map_coord_templates",map_coord_templates)
                 UI.SuccessMessage("done")
                 resolve({
                     map_coord_templates:map_coord_templates,
