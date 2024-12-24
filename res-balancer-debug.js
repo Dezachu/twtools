@@ -1922,7 +1922,8 @@ async function getResourcesForAM(time_construction_total,map_farm_usage){
     
                 let lv_building_AM=list_template[i].level_absolute//level building from AM template
                 let lv_building_current=map_buildings.get(key_building)//curent building from building page
-    
+
+		console.log("Dez inner test", coord, lv_building_AM, lv_building_current);
                 
                 if(lv_building_AM>lv_building_current){//means current building must be constructed
                     let nr_levels=lv_building_AM-lv_building_current //lv building from AM can have 2-3 level above the current lv from building page
